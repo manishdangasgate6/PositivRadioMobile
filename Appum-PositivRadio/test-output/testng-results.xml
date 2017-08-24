@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="78899" started-at="2017-08-24T09:57:54Z" finished-at="2017-08-24T09:59:13Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="78899" started-at="2017-08-24T09:57:54Z" finished-at="2017-08-24T09:59:13Z">
+      <class name="Appium.Appum_PositivRadio.AppTest">
+        <test-method status="PASS" signature="setup()[pri:0, instance:Appium.Appum_PositivRadio.AppTest@3abbfa04]" name="setup" is-config="true" duration-ms="51180" started-at="2017-08-24T15:27:54Z" finished-at="2017-08-24T15:28:45Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="loginTest()[pri:0, instance:Appium.Appum_PositivRadio.AppTest@3abbfa04]" name="loginTest" duration-ms="16962" started-at="2017-08-24T15:28:45Z" finished-at="2017-08-24T15:29:02Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- loginTest -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:Appium.Appum_PositivRadio.AppTest@3abbfa04]" name="tearDown" is-config="true" duration-ms="10735" started-at="2017-08-24T15:29:02Z" finished-at="2017-08-24T15:29:13Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- Appium.Appum_PositivRadio.AppTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
