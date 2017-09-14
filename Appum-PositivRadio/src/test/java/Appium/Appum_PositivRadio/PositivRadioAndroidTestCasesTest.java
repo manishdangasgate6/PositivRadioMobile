@@ -1,12 +1,18 @@
 package Appium.Appum_PositivRadio;
 
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.Test;
+
+import static org.testng.Assert.assertEquals;
+
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-
+import io.appium.java_client.TouchShortcuts;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -16,12 +22,18 @@ import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
+import io.appium.java_client.MobileDriver;
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.MultiTouchAction;
+import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 
-public class AppTest {
+public class PositivRadioAndroidTestCasesTest {
 
-	WebDriver driver = null;
+	// WebDriver driver = null;
+	Dimension size;
+	AndroidDriver driver;
 
 	@BeforeMethod
 	public void setup() throws InterruptedException, MalformedURLException {
@@ -32,9 +44,9 @@ public class AppTest {
 		capabilities.setCapability(CapabilityType.BROWSER_NAME, "");
 		// capabilities.setCapability("deviceName", "S6");
 		capabilities.setCapability("deviceName", "192.168.237.101:5555");
-		capabilities.setCapability(CapabilityType.VERSION, "5.1.0");
+		// capabilities.setCapability(CapabilityType.VERSION, "5.1.0");
 		capabilities.setCapability(CapabilityType.PLATFORM, "WINDOWS");
-		capabilities.setCapability("platformVersion", "5.1.0");
+		capabilities.setCapability("platformVersion", "6.0");
 		capabilities.setCapability("platformName", "Android");
 
 		// Here we mention the app's package name, to find the package name we
@@ -69,7 +81,7 @@ public class AppTest {
 		FUllName.sendKeys("Test Account");
 
 		MobileElement Email = (MobileElement) (driver.findElement(By.name("Email")));
-		Email.sendKeys("test.account21@mailinator.com");
+		Email.sendKeys("test.account250@mailinator.com");
 
 		MobileElement Password = (MobileElement) (driver
 				.findElement(By.id("com.medianet.positivradio:id/edittext_password")));
@@ -317,7 +329,7 @@ public class AppTest {
 		MobileElement GetStatus = (MobileElement) (driver.findElement(By.name("Remove from Downloads")));
 		String test = GetStatus.getText();
 
-		//System.out.println(GetStatus);
+		// System.out.println(GetStatus);
 
 		Assert.assertEquals("Remove from Downloads", test);
 
@@ -331,17 +343,282 @@ public class AppTest {
 		MobileElement GetStatus1 = (MobileElement) (driver.findElement(By.name("Download")));
 		String Assert1 = GetStatus1.getText();
 
-		//System.out.println(GetStatus1);
+		// System.out.println(GetStatus1);
 
 		Assert.assertEquals("Download", Assert1);
+
+	}
+
+	@Test(priority = 7)
+	public void BrowseContent() {
+
+		MobileElement PlayServiceErrorPopUp = (MobileElement) (driver
+				.findElement(By.className("android.widget.Button")));
+		PlayServiceErrorPopUp.click();
+
+		MobileElement Email = (MobileElement) (driver.findElement(By.name("Email")));
+		Email.sendKeys("manish.dangas@gate6.com");
+
+		MobileElement Password = (MobileElement) (driver
+				.findElement(By.id("com.medianet.positivradio:id/edittext_password")));
+		Password.sendKeys("Gate6@123");
+
+		MobileElement ClickSign = (MobileElement) (driver
+				.findElement(By.id("com.medianet.positivradio:id/btn_signin")));
+		ClickSign.click();
+
+		MobileElement mediaPermission1 = (MobileElement) (driver.findElement(By.name("Allow")));
+		mediaPermission1.click();
+
+		MobileElement PlayServiceErrorPopUp1 = (MobileElement) (driver
+				.findElement(By.className("android.widget.Button")));
+		PlayServiceErrorPopUp1.click();
+
+		MobileElement ClickBrowse = (MobileElement) (driver
+				.findElement(By.id("com.medianet.positivradio:id/tab_Browse")));
+		ClickBrowse.click();
+
+		MobileElement AssertCheck = (MobileElement) (driver
+				.findElement(By.id("com.medianet.positivradio:id/tab_text")));
+		String text = AssertCheck.getText();
+
+		Assert.assertEquals(text, "Top Talks");
+
+		MobileElement ClickTopSpeakers = (MobileElement) (driver.findElement(By.name("Top Speakers")));
+		ClickTopSpeakers.click();
+
+		String text1 = ClickTopSpeakers.getText();
+
+		Assert.assertEquals(text1, "Top Speakers");
+
+	}
+
+	@Test(priority = 8)
+	public void AddTalkToLibrar() throws InterruptedException {
+
+		MobileElement PlayServiceErrorPopUp = (MobileElement) (driver
+				.findElement(By.className("android.widget.Button")));
+		PlayServiceErrorPopUp.click();
+
+		MobileElement Email = (MobileElement) (driver.findElement(By.name("Email")));
+		Email.sendKeys("manish.dangas@gate6.com");
+
+		MobileElement Password = (MobileElement) (driver
+				.findElement(By.id("com.medianet.positivradio:id/edittext_password")));
+		Password.sendKeys("Gate6@123");
+
+		MobileElement ClickSign = (MobileElement) (driver
+				.findElement(By.id("com.medianet.positivradio:id/btn_signin")));
+		ClickSign.click();
+
+		MobileElement mediaPermission1 = (MobileElement) (driver.findElement(By.name("Allow")));
+		mediaPermission1.click();
+
+		MobileElement PlayServiceErrorPopUp1 = (MobileElement) (driver
+				.findElement(By.className("android.widget.Button")));
+		PlayServiceErrorPopUp1.click();
+
+		MobileElement ClickBrowse = (MobileElement) (driver
+				.findElement(By.id("com.medianet.positivradio:id/tab_Browse")));
+		ClickBrowse.click();
+
+		driver.scrollTo("Ultimate Edge");
+
+		MobileElement SelectOneTalk = (MobileElement) (driver.findElement(By.name("Ultimate Edge")));
+		SelectOneTalk.click();
+
+		MobileElement ClickThreeDot = (MobileElement) (driver
+				.findElement(By.id("com.medianet.positivradio:id/header_menu")));
+		ClickThreeDot.click();
+
+		MobileElement AddtoLibrary = (MobileElement) (driver.findElement(By.name("Add to Library")));
+		AddtoLibrary.click();
+
+		MobileElement ClickThreeDot1 = (MobileElement) (driver
+				.findElement(By.id("com.medianet.positivradio:id/header_menu")));
+		ClickThreeDot1.click();
+
+		MobileElement CheckText = (MobileElement) (driver.findElement(By.name("Remove from Library")));
+		String Assert12 = CheckText.getText();
+
+		Assert.assertEquals("Remove from Library", Assert12);
+
+	}
+
+	@Test(priority = 9)
+	public void RemoveTalkToLibrar() throws InterruptedException {
+
+		MobileElement PlayServiceErrorPopUp = (MobileElement) (driver
+				.findElement(By.className("android.widget.Button")));
+		PlayServiceErrorPopUp.click();
+
+		MobileElement Email = (MobileElement) (driver.findElement(By.name("Email")));
+		Email.sendKeys("manish.dangas@gate6.com");
+
+		MobileElement Password = (MobileElement) (driver
+				.findElement(By.id("com.medianet.positivradio:id/edittext_password")));
+		Password.sendKeys("Gate6@123");
+
+		MobileElement ClickSign = (MobileElement) (driver
+				.findElement(By.id("com.medianet.positivradio:id/btn_signin")));
+		ClickSign.click();
+
+		MobileElement mediaPermission1 = (MobileElement) (driver.findElement(By.name("Allow")));
+		mediaPermission1.click();
+
+		MobileElement PlayServiceErrorPopUp1 = (MobileElement) (driver
+				.findElement(By.className("android.widget.Button")));
+		PlayServiceErrorPopUp1.click();
+
+		MobileElement ClickBrowse = (MobileElement) (driver
+				.findElement(By.id("com.medianet.positivradio:id/tab_Browse")));
+		ClickBrowse.click();
+
+		driver.scrollTo("Ultimate Edge");
+
+		MobileElement SelectOneTalk = (MobileElement) (driver.findElement(By.name("Ultimate Edge")));
+		SelectOneTalk.click();
+
+		MobileElement ClickThreeDot = (MobileElement) (driver
+				.findElement(By.id("com.medianet.positivradio:id/header_menu")));
+		ClickThreeDot.click();
+
+		MobileElement AddtoLibrary = (MobileElement) (driver.findElement(By.name("Remove from Library")));
+		AddtoLibrary.click();
+
+		// Remove from Library
+		MobileElement ClickThreeDot1 = (MobileElement) (driver
+				.findElement(By.id("com.medianet.positivradio:id/header_menu")));
+		ClickThreeDot1.click();
+
+		MobileElement CheckText = (MobileElement) (driver.findElement(By.name("Add to Library")));
+		String Assert12 = CheckText.getText();
+
+		Assert.assertEquals("Add to Library", Assert12);
+
+	}
+
+	@Test(priority = 10)
+	public void DownloadEntireTalk_PlayTalk_ExpandNowPlaying() throws InterruptedException {
+
+		MobileElement PlayServiceErrorPopUp = (MobileElement) (driver
+				.findElement(By.className("android.widget.Button")));
+		PlayServiceErrorPopUp.click();
+
+		MobileElement Email = (MobileElement) (driver.findElement(By.name("Email")));
+		Email.sendKeys("manish.dangas@gate6.com");
+
+		MobileElement Password = (MobileElement) (driver
+				.findElement(By.id("com.medianet.positivradio:id/edittext_password")));
+		Password.sendKeys("Gate6@123");
+
+		MobileElement ClickSign = (MobileElement) (driver
+				.findElement(By.id("com.medianet.positivradio:id/btn_signin")));
+		ClickSign.click();
+
+		MobileElement mediaPermission1 = (MobileElement) (driver.findElement(By.name("Allow")));
+		mediaPermission1.click();
+
+		MobileElement PlayServiceErrorPopUp1 = (MobileElement) (driver
+				.findElement(By.className("android.widget.Button")));
+		PlayServiceErrorPopUp1.click();
+
+		MobileElement ClickBrowse = (MobileElement) (driver
+				.findElement(By.id("com.medianet.positivradio:id/tab_Browse")));
+		ClickBrowse.click();
+
+		driver.scrollTo("Ultimate Edge");
+
+		MobileElement SelectOneTalk = (MobileElement) (driver.findElement(By.name("Ultimate Edge")));
+		SelectOneTalk.click();
+
+		MobileElement ClickThreeDot = (MobileElement) (driver
+				.findElement(By.id("com.medianet.positivradio:id/header_menu")));
+		ClickThreeDot.click();
+
+		MobileElement download = (MobileElement) (driver.findElement(By.name("Download")));
+		download.click();
+
+		MobileElement TalkPlay = (MobileElement) (driver
+				.findElement(By.id("com.medianet.positivradio:id/img_startPlaying")));
+		TalkPlay.click();
+
+		MobileElement CheckPlay = (MobileElement) (driver.findElement(By.className("android.widget.LinearLayout")));
+		CheckPlay.click();
+
+		MobileElement ExpandNowPlaying = (MobileElement) (driver
+				.findElement(By.id("com.medianet.positivradio:id/track_player")));
+		ExpandNowPlaying.click();
+
+	}
+
+	@Test(priority = 11)
+	public void RemoveDownloadedTalk() throws InterruptedException {
+
+		MobileElement PlayServiceErrorPopUp = (MobileElement) (driver
+				.findElement(By.className("android.widget.Button")));
+		PlayServiceErrorPopUp.click();
+
+		MobileElement Email = (MobileElement) (driver.findElement(By.name("Email")));
+		Email.sendKeys("manish.dangas@gate6.com");
+
+		MobileElement Password = (MobileElement) (driver
+				.findElement(By.id("com.medianet.positivradio:id/edittext_password")));
+		Password.sendKeys("Gate6@123");
+
+		MobileElement ClickSign = (MobileElement) (driver
+				.findElement(By.id("com.medianet.positivradio:id/btn_signin")));
+		ClickSign.click();
+
+		MobileElement mediaPermission1 = (MobileElement) (driver.findElement(By.name("Allow")));
+		mediaPermission1.click();
+
+		MobileElement PlayServiceErrorPopUp1 = (MobileElement) (driver
+				.findElement(By.className("android.widget.Button")));
+		PlayServiceErrorPopUp1.click();
+
+		MobileElement ClickBrowse = (MobileElement) (driver
+				.findElement(By.id("com.medianet.positivradio:id/tab_Browse")));
+		ClickBrowse.click();
+
+		driver.scrollTo("Ultimate Edge");
+
+		MobileElement SelectOneTalk = (MobileElement) (driver.findElement(By.name("Ultimate Edge")));
+		SelectOneTalk.click();
+
+		MobileElement ClickThreeDot = (MobileElement) (driver
+				.findElement(By.id("com.medianet.positivradio:id/header_menu")));
+		ClickThreeDot.click();
+
+		MobileElement download = (MobileElement) (driver.findElement(By.name("Remove from Downloads")));
+		download.click();
+
+		// -----------------Remove from lib--------------------
+
+		MobileElement ClickThreeDot1 = (MobileElement) (driver
+				.findElement(By.id("com.medianet.positivradio:id/header_menu")));
+		ClickThreeDot1.click();
+
+		MobileElement AddtoLibrary = (MobileElement) (driver.findElement(By.name("Remove from Library")));
+		AddtoLibrary.click();
+
+		// Remove from Library
+		MobileElement ClickThreeDot2 = (MobileElement) (driver
+				.findElement(By.id("com.medianet.positivradio:id/header_menu")));
+		ClickThreeDot2.click();
+
+		MobileElement CheckText = (MobileElement) (driver.findElement(By.name("Add to Library")));
+		String Assert12 = CheckText.getText();
+
+		Assert.assertEquals("Add to Library", Assert12);
 
 	}
 
 	@AfterMethod
 	public void tearDown() throws InterruptedException {
 
-		Thread.sleep(10000);
-		driver.quit();
+		// Thread.sleep(10000);
+		// driver.quit();
 	}
 
 }
