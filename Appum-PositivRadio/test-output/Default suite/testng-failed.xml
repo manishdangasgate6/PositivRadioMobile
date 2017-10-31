@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="Appium.Appum_PositivRadio.AppTest">
+      <class name="Sprint5.SearchTest">
         <methods>
-          <include name="tearDown"/>
-          <include name="loginTest"/>
+          <include name="SearchTalkAndVerifyIt"/>
           <include name="setup"/>
+          <include name="tearDown"/>
         </methods>
-      </class> <!-- Appium.Appum_PositivRadio.AppTest -->
+      </class> <!-- Sprint5.SearchTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
