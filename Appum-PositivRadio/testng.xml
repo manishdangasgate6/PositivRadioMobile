@@ -3,7 +3,7 @@
 <suite name="Suite">
   <test name="Test">
     <classes>
-      <class name="Appium.Appum_PositivRadio.AppTest"/>
+      <class name="PositivAndroid.PositivAndroid.SettingTest"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
